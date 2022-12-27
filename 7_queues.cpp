@@ -1,9 +1,9 @@
 /*
-Stack : It is a data structure wich follows LIFO characteristics.
+Queue : It is a data structure wich follows FIFO characteristics.
 */
 #include <bits/stdc++.h>
 using namespace std;
-int size = -1;
+int size = -1, fsize = 0;
 void push(vector<int> &vec, int n)
 {
     vec.push_back(n);
@@ -11,31 +11,31 @@ void push(vector<int> &vec, int n)
 }
 void pop(vector<int> &vec)
 {
-    if (size < 0)
+    if (size < fsize)
         return;
-    size--;
+    fsize++;
 }
 int top(vector<int> &vec)
 {
     if (size < 0)
         return -1;
-    return vec[size];
+    return vec[fsize];
 }
 
 int main()
 {
     // declartion of stack
 
-    stack<int> st;
+    queue<int> q;
 
-    st.push(2);
-    st.push(8);
-    st.push(6);
+    q.push(2);
+    q.push(8);
+    q.push(6);
 
-    while (!st.empty())
+    while (!q.empty())
     {
-        int x = st.top();
-        st.pop();
+        int x = q.front();
+        q.pop();
         cout << x << " ";
     }
 
@@ -50,9 +50,10 @@ int main()
     push(vec, 8);
     push(vec, 5);
 
+    pop(vec);
+
     cout << top(vec) << " ";
 
-    pop(vec);
     pop(vec);
     pop(vec);
 
